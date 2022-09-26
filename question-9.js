@@ -38,8 +38,18 @@ function createIndexForDictionary(d){
 //index to speed up your search.
 //Return true when you find it, and false if you do not.
 function indexSearch(needle, haystack, index){
+let startingPoint = createIndexForDictionary(getPositionInAlphabet(needle));
+let endingPoint = createIndexForDictionary((getPositionInAlphabet(needle) + 1));
 
-    //(your code here)
+   for (i = startingPoint; i < endingPoint; i++) {
+    if (needle == haystack[i]) {
+        return true;
+     } else {
+         
+     }
+ }
+
+ return false;
 
 }
 
