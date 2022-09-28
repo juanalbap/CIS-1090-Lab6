@@ -38,21 +38,25 @@ function createIndexForDictionary(d){
 //index to speed up your search.
 //Return true when you find it, and false if you do not.
 function indexSearch(needle, haystack, index){
-let startingPoint = createIndexForDictionary(getPositionInAlphabet(needle));
-let endingPoint = createIndexForDictionary((getPositionInAlphabet(needle) + 1));
 
-   for (i = startingPoint; i < endingPoint; i++) {
-    if (needle == haystack[i]) {
-        return true;
-     } else {
+    let startingPoint = index[getPositionInAlphabet(needle)];
+    let endingPoint = index[getPositionInAlphabet(needle)+1];
+
+    for (i = startingPoint; i < endingPoint; i++) {
+        if (needle == haystack[i]) {
+            return true;
+        } else {
          
-     }
- }
+        }
+    }
 
  return false;
 
 }
 
+//Basically, index is an array. On line 60 you are assigning the array index with all the values in the array dictionary. You are putting
+//the whole dictionary into the array index. In function indexSearch, you just determine what portion of that index you want to use in 
+//your search. You cut out a part of the index array, which is like saying index = dictionary.
 let index = createIndexForDictionary(dictionary);
 console.log(indexSearch("public", dictionary, index));      //Should be true
 console.log(indexSearch("squanchy", dictionary, index));    //Should be false
